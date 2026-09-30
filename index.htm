@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Workout Plan Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>FITBUDDY</h1>
+            <p>Your Personalized Workout Plan Generator</p>
+        </div>
+
+        <div class="form-card">
+
+            <h2>Enter Your Details</h2>
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+
+                <div class="input-group">
+                    <label>Age</label>
+                    <input type="number" id="age" placeholder="Enter age">
+                </div>
+
+                <div class="input-group">
+                    <label>Height (cm)</label>
+                    <input type="number" id="height" placeholder="Example: 170">
+                </div>
+
+                <div class="input-group">
+                    <label>Weight (kg)</label>
+                    <input type="number" id="weight" placeholder="Example: 65">
+                </div>
+
+            </div>
+
+            <div class="input-group">
+                <label>Fitness Level</label>
+
+                <select id="level">
+                    <option value="">Select Fitness Level</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+            </div>
+
+            <button onclick="generatePlan()" class="generate-btn">
+                Generate Workout Plan
+            </button>
+
+        </div>
+
+
+        <div id="result" class="result-card">
+
+            <div class="result-header">
+                <h2>Your Workout Plan</h2>
+            </div>
+
+            <div id="userInfo"></div>
+
+            <div id="bmiBox"></div>
+
+            <h3>Warm-up</h3>
+
+            <div class="info-box">
+                5–10 minutes of light jogging, jumping jacks,
+                arm circles and dynamic stretching.
+            </div>
+
+            <h3>7-Day Workout Plan</h3>
+
+            <div id="workoutPlan"></div>
+
+            <h3>Cool-down</h3>
+
+            <div class="info-box">
+                5–10 minutes of slow walking and full-body stretching.
+            </div>
+
+            <button onclick="downloadPDF()" class="pdf-btn">
+                 Download Workout Plan PDF
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- LOCAL jsPDF -->
+    <script src="js/jspdf.umd.min.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
