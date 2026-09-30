@@ -84,7 +84,7 @@ async function generatePlan() {
             throw new Error(data.error || "Failed to generate plan.");
         }
 
-        document.getElementById("aiPlan").textContent = data.plan;
+        document.getElementById("aiPlan").innerHTML = data.plan;
         document.getElementById("result").style.display = "block";
 
     } catch (error) {
