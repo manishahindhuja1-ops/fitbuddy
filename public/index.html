@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBuddy - AI Fitness Plan Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="container">
+    <header class="header">
+        <div class="logo">💪 FitBuddy</div>
+        <h1>AI Fitness Plan Generator</h1>
+        <p>Personalized fitness plans powered by Gemini AI</p>
+    </header>
+
+    <section class="card">
+        <h2>👤 Personal Details</h2>
+
+        <div class="form-grid">
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="name" placeholder="Enter your name">
+            </div>
+
+            <div class="input-group">
+                <label>Age</label>
+                <input type="number" id="age" placeholder="Enter age">
+            </div>
+
+            <div class="input-group">
+                <label>Height (cm)</label>
+                <input type="number" id="height" placeholder="Example: 170">
+            </div>
+
+            <div class="input-group">
+                <label>Weight (kg)</label>
+                <input type="number" id="weight" placeholder="Example: 65">
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Fitness Level</label>
+            <select id="level">
+                <option value="">Select Fitness Level</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Fitness Goal</label>
+            <select id="goal">
+                <option value="">Select Fitness Goal</option>
+                <option value="Weight Loss">Weight Loss</option>
+                <option value="Muscle Gain">Muscle Gain</option>
+                <option value="General Fitness">General Fitness</option>
+                <option value="Strength">Strength</option>
+                <option value="Flexibility">Flexibility</option>
+            </select>
+        </div>
+
+        <button class="generate-btn" onclick="generatePlan()">
+            ✨ Generate AI Fitness Plan
+        </button>
+    </section>
+
+    <section id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>🤖 FitBuddy AI is creating your personalized plan...</p>
+    </section>
+
+    <section id="result" class="card result">
+        <h2>🏋️ Your FitBuddy Plan</h2>
+        <div id="userInfo"></div>
+        <div id="bmiBox"></div>
+
+        <h3>🤖 Gemini AI Fitness Plan</h3>
+        <div id="aiPlan" class="ai-plan"></div>
+
+        <button class="pdf-btn" onclick="downloadPDF()">
+            📄 Download Fitness Plan PDF
+        </button>
+    </section>
+
+    <footer>
+        <p>FitBuddy © 2026</p>
+        <p>AI Fitness Plan Generator using Gemini Models</p>
+    </footer>
+</div>
+
+<script src="js/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
