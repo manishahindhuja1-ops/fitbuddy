@@ -63,12 +63,43 @@ Use clear headings and bullet points.
 
         console.log("Sending request to Gemini...");
 
-       const response = await ai.models.generateContent({
-    model: "gemini-3.6-flash",
-    contents: prompt
-});
+        let response;
 
-        console.log("Gemini response received.");
+        // Retry Gemini request if temporary 503 error occurs
+        for (let attempt = 1; attempt <= 4; attempt++) {
+            try {
+                console.log(`Gemini attempt ${attempt}...`);
+
+                response = await ai.models.generateContent({
+                    model: "gemini-3.6-flash",
+                    contents: prompt
+                });
+
+                console.log("Gemini response received.");
+                break;
+
+            } catch (error) {
+                console.error(
+                    `Gemini attempt ${attempt} failed:`,
+                    error.message
+                );
+
+                // Retry only for temporary 503 errors
+                if (error.status !== 503 || attempt === 4) {
+                    throw error;
+                }
+
+                const waitTime = attempt * 3000;
+
+                console.log(
+                    `Waiting ${waitTime / 1000} seconds before retry...`
+                );
+
+                await new Promise(resolve =>
+                    setTimeout(resolve, waitTime)
+                );
+            }
+        }
 
         res.json({
             success: true,
